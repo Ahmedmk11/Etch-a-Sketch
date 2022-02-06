@@ -1,3 +1,6 @@
+const DEFAULT_SIZE = 16;
+let currentSize = DEFAULT_SIZE;
+
 function drawButton(){
     drawBtn.classList.add('toggled-button');
     if(ers.classList.contains('toggled-button')){
@@ -17,7 +20,7 @@ function canDraw() {
 function draw(e){
     colorPicked = colors.value;
 
-    if (canDraw()) {
+    if (canDraw() && e.fromElement.classList.contains('can-draw')) {
       e.fromElement.setAttribute('style',`background: ${colorPicked}`)
     }
 }
@@ -41,11 +44,54 @@ function clear(){
     if(ers.classList.contains('toggled-button')){
         ers.classList.remove('toggled-button');
     }
-
 }
 
-let value = document.getElementById('adjust-value');
-value.textContent = "16 x 16";
+function loadGrid(gridSize){
+    gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`
+    gridContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`
+
+    for(let i = 0; i < (gridSize ** 2); i++){
+        let div = document.createElement('div');
+        div.setAttribute('class', 'grid-item can-draw');
+        div.addEventListener("mouseover", draw);
+        gridContainer.append(div);
+        
+    }
+}
+
+function clearGrid() {
+    gridContainer.innerHTML = '';
+}
+
+function reloadGrid() {
+    clearGrid();
+    loadGrid(currentSize);
+}
+
+function updateSizeValue(value) {
+    adjustValue.textContent = `${value} x ${value}`
+}
+
+function setCurrentSize(newSize) {
+    currentSize = newSize;
+}
+
+function changeSize(value) {
+    setCurrentSize(value);
+    updateSizeValue(value);
+    reloadGrid();
+}
+
+let gridLines = document.getElementById('grid-lines');
+gridLines.addEventListener('click', () =>{
+    (gridContainer.classList.toggle('gap'))
+});
+
+let gridSizeElement = document.querySelector('.slider');
+gridSizeElement.onchange = (e) => changeSize(e.target.value);
+
+let adjustValue = document.getElementById('adjust-value');
+adjustValue.textContent= `${DEFAULT_SIZE} x ${DEFAULT_SIZE}`;
 
 
 let colors = document.getElementById('color-wheel');
@@ -55,14 +101,6 @@ console.log(colorPicked);
 let gridContainer = document.getElementById('grid-container');
 let gridArray = [];
 let mouseEvent = {};
-for(let i = 0; i < 256; i++){
-    let div = document.createElement('div');
-    div.addEventListener("mouseover", draw);
-    div.setAttribute('class', 'grid-item');
-    div.addEventListener("mouseover", draw);
-    gridContainer.append(div);
-    gridArray[i] = div;
-}
 
 let clr = document.getElementById('clear-all');
 clr.addEventListener("click",clear);
@@ -71,4 +109,14 @@ let drawBtn = document.getElementById('pencil');
 let ers = document.getElementById('grid-eraser');
 
 
+// for(let i = 0; i < (gridSize ** 2); i++){
+//     let div = document.createElement('div');
+//     div.setAttribute('class', 'grid-item');
+//     div.addEventListener("mouseover", draw);
+//     gridContainer.append(div);
+//     gridArray[i] = div;
+// }
 
+window.onload = () => {
+    loadGrid(DEFAULT_SIZE)
+};

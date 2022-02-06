@@ -21,11 +21,12 @@
                 <div id="circle">
                     <input id="color-wheel" type="color">
                 </div>
-                
 
+                <button class="buttons" id="new-btn" onclick="reloadGrid()">New Page</button>
                 <button class="buttons" id="pencil" onclick="drawButton()">Pencil</button>
                 <button class="buttons" id="grid-eraser" onclick="eraser()">Eraser</button>
-                <button class="buttons" id="clear-all">Clear</button>
+                <button class="buttons" id="grid-lines">Toggle Grid</button>
+                <button class="buttons" id="clear-all" onclick="clearGrid()">Clear</button>
             </div>
 
             <div class="center" id="grid-container"></div>
@@ -35,13 +36,14 @@
             <div id="settings2">
                 <div id="adjust-value"></div>
                 <div id="grid-adjust">
-                    <input class="slider" type="range" min="1" max="128" value="64">
+                    <input class="slider" type="range" min="1" max="32" value="16">
                 </div>
             </div>
         </div>
 
         <footer>
-            <p>Copyright © 2022 Ahmed Mahmoud</p>
+            <h4>Built by <a href="https://github.com/Ahmedmk11" target="_blank"> Ahmed Mahmoud</a></h4>
+            <p>Copyright © 2022</p>
         </footer>
 
     </body>
