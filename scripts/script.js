@@ -3,17 +3,11 @@ let currentSize = DEFAULT_SIZE;
 
 function drawButton(){
     drawBtn.classList.add('toggled-button');
-    if(ers.classList.contains('toggled-button')){
-        ers.classList.remove('toggled-button');
-    }
     gridContainer.addEventListener("mousedown", () => mouseEvent.mouseDown = true)
     gridContainer.addEventListener("mouseup", () => delete mouseEvent.mouseDown)
 }
 
 function canDraw() {
-    if (ers.classList.contains('toggled-button')){
-        return false;
-    }
     return mouseEvent.mouseDown;
 }
 
@@ -23,16 +17,6 @@ function draw(e){
     if (canDraw() && e.fromElement.classList.contains('can-draw')) {
       e.fromElement.setAttribute('style',`background: ${colorPicked}`)
     }
-}
-
-function eraser(){
-    ers.classList.add('toggled-button');
-    if(drawBtn.classList.contains('toggled-button')){
-        drawBtn.classList.remove('toggled-button');
-    }
-    gridArray.forEach(item => item.addEventListener("click", () => {
-        (item.setAttribute('style', 'background: white'))
-    }));
 }
 
 function clear(){
