@@ -21,11 +21,13 @@ header{
 }
 
 #grid-container{
-    border: 60px solid black;
+    width:80vh;
+    height:80vh;
+    border: 7.5vh solid black;
     box-shadow: 5px 5px 20px black;
     display: grid;
-    grid-template-columns: repeat(16, 40px);
-    grid-template-rows: repeat(16, 40px);
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
     
 }
 #settings-container{
@@ -36,12 +38,22 @@ header{
     width: 25%;
     height: 50%;
 }
-#clear-all, #grid-eraser{
-    width: 90px;
+
+#clear-all, #grid-eraser,#pencil{
     height: 60px;
+}
+#clear-all, #grid-eraser,#pencil{
+    width: 90px;
     background-color: #876445;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
+}
+#clear-all:active{
+    background-color: burlywood;
+}
+
+#grid-adjust{
+    width: 65%;
 }
 #color-wheel{
     width: 90px;
@@ -52,7 +64,7 @@ header{
     font-size: 20px;
     border: 1px solid black;
 }
-#clear-all:hover, #grid-eraser:hover, #color-wheel:hover{
+#clear-all:hover, #grid-eraser:hover, #color-wheel:hover, #pencil:hover{
     cursor: pointer;
     transform: scale(1.1);
     -webkit-transform: scale(1.1);
@@ -76,6 +88,7 @@ header{
 #adjust-value{
     padding:2vw;
 }
+
 .slider {
     -webkit-appearance: none;
     appearance: none;
@@ -120,3 +133,7 @@ header{
 footer{
     margin-bottom: 20px;
 }
+.toggled-button{
+    background-color: burlywood !important;
+}
+
