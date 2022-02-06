@@ -1,0 +1,114 @@
+html,body{
+    height: 100%;
+    background-color: slategrey;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+header{
+    font-size: 20px;
+    text-align: center;
+}
+
+#grid-container-parent{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    margin-top: 50px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 20px;
+}
+
+#grid-container{
+    border: 60px solid black;
+    box-shadow: 5px 5px 20px black;
+    display: grid;
+    grid-template-columns: repeat(16, 40px);
+    grid-template-rows: repeat(16, 40px);
+    
+}
+#settings-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 25%;
+    height: 50%;
+}
+#clear-all, #grid-eraser{
+    width: 90px;
+    height: 60px;
+    background-color: #876445;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+#color-wheel{
+    width: 90px;
+    height: 60px;
+    padding: 10px;
+    background-color: #876445;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+#clear-all:hover, #grid-eraser:hover, #color-wheel:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transition: transform 0.1s ease;
+    -webkit-transition: transform 0.1s ease;
+    -moz-transition: transform 0.1s ease;
+    -ms-transition: transform 0.1s ease;
+    -o-transition: transform 0.1s ease;
+}
+#settings2{
+    width: 25%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#adjust-value{
+    padding:3vw;
+}
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 15px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+.slider:hover {
+    opacity: 1; 
+}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 15px; 
+    height: 15px; 
+    background:#876445; 
+    cursor: pointer; 
+}
+  
+.slider::-moz-range-thumb {
+    width: 15px; 
+    height: 15px; 
+    background: #876445; 
+    cursor: pointer; 
+}
+
+.grid-item{
+    background-color: white;   
+}
+
+.hover{
+    background-color: blue;
+}
